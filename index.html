@@ -1,0 +1,98 @@
+<!-- Form.html  -->
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>tomorrow's problems, today!</title>
+  <meta name="author" content="name">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
+  <link rel="icon" href="icon.jpg">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+    <style>.tools { margin-bottom: 10px; }
+.tools a {
+  border: 1px solid black;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  color: black;
+  font-weight: bold;
+}</style>
+
+  <body>
+    <form>
+      <h4>Where will you go for vacation?</h4>
+
+      <input type="radio" name="places" value="Place 1" />Place 1
+
+      <br />
+      <input type="radio" name="places" value="Place 2" />Place 2
+
+      <br />
+      <input type="radio" name="places" value="Place 3" />Place 3
+
+      <br />
+      <input type="radio" name="places" value="Place 4" />Place 4
+
+      <br />
+      <br />
+      <div class="demo" id="colors_demo">
+  <div class="tools">
+      <a href="#colors_sketch" data-tool="marker">Marker</a>
+      <a href="#colors_sketch" data-tool="eraser">Eraser</a>
+      <a href="#colors_sketch" data-download="png" style="float: right; width: 100px;">Download</a>
+  </div>
+  <canvas id="colors_sketch" width="750" height="500" style="border:2px solid #000000;"></canvas>
+</div>
+      <input type="submit" value="SUBMIT" />
+    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+$(document).ready(function () {
+  //submitted form
+  if ($('[name=IsLocked]').val() == 'True') {
+    var myCanvas = document.getElementById('colors_sketch');
+	var ctx = myCanvas.getContext('2d');
+    var img = new Image;
+    img.onload = function() {
+      ctx.drawImage(this, 0, 0, myCanvas.width, myCanvas.height);
+    }
+    img.src = $('.saveimage .cf-field').text();
+  }
+  else {
+  //fill form
+  $.getScript('https://github.com/soulwire/sketch.js/tree/master/js/sketch.js', function() {
+      //script is loaded and executed put your dependent JS here
+      $.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {
+        $('#colors_demo .tools').append("<a href='#colors_sketch' data-color='" + this + "' style='width: 10px; background: " + this + ";'></a> ");
+      });
+      $.each([3, 5, 10, 15], function() {
+        $('#colors_demo .tools').append("<a href='#colors_sketch' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
+      });
+      //$('#colors_sketch').sketch();
+      $('#colors_sketch').sketch({defaultColor: "#000"});
+    });
+    $('.imagefinish input').change(function(){
+      if(this.checked) {
+        var myCanvas = document.getElementById('colors_sketch');
+        $('.saveimage textarea').val(myCanvas.toDataURL());
+      }
+    });
+  }
+});
+    </script>
+  </body>
+</html>
