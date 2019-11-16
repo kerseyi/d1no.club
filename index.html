@@ -3,31 +3,22 @@
   <meta charset="UTF-8">
   <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
   <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
   <script language="javascript" type="text/javascript" src="sketch.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-  <input>
+
   <div id ="canvascontainer"></div>
-
-  <p>
-    <button id="saveButton">save</button>
-    <button id="clearButton">clear</button>
-  </p>
-
-    <ol id="drawinglist">
-
-    </ol>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <br>
+  <button id="saveButton">Save!</button>
 
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
-
-<script>
+<!-- <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyCHpEE0BJ4VJeozU7pGxoeD95hti0dTcLM",
@@ -42,6 +33,6 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-</script>
+</script> -->
 </body>
 </html>
