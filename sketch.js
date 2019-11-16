@@ -1,7 +1,4 @@
-/ Daniel Shiffman
-// http://codingtra.in
-// http://patreon.com/codingtrain
-// Code for: https://youtu.be/RUSvMxxm_Jo
+
 
 var database;
 
@@ -27,11 +24,14 @@ function setup() {
 
 
   var config = {
-    apiKey: [YOUR_API_KEY],
-    authDomain: "my-not-awesome-project.firebaseapp.com",
-    databaseURL: "https://my-not-awesome-project.firebaseio.com",
-    storageBucket: "my-not-awesome-project.appspot.com",
-    messagingSenderId: "583703514528"
+    apiKey: "AIzaSyCHpEE0BJ4VJeozU7pGxoeD95hti0dTcLM",
+    authDomain: "d1no-club.firebaseapp.com",
+    databaseURL: "https://d1no-club.firebaseio.com",
+    projectId: "d1no-club",
+    storageBucket: "d1no-club.appspot.com",
+    messagingSenderId: "623680606310",
+    appId: "1:623680606310:web:579795658bc9ba9449dda7",
+    measurementId: "G-SXZ489X6X9"
   };
   firebase.initializeApp(config);
   database = firebase.database();
