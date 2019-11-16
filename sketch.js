@@ -7,7 +7,7 @@ var currentPath = [];
 var isDrawing = false;
 
 function setup() {
-  canvas = createCanvas(200, 200);
+  canvas = createCanvas(500, 500);
 
 
 
@@ -33,6 +33,7 @@ function setup() {
     appId: "1:623680606310:web:579795658bc9ba9449dda7",
     measurementId: "G-SXZ489X6X9"
   };
+  console.log(firebase);
   firebase.initializeApp(config);
   database = firebase.database();
 
