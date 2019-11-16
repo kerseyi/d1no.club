@@ -86,11 +86,11 @@ function saveDrawing(){
   }
   var result = ref.push(data, dataSent);
   console.log(result.key);
-  function dataSent(status) {
+  function dataSent(err, status) {
     console.log(status);
   }
 }
-
+//13:25 in video ;)
 // Initialize Firebase
   
 
