@@ -42,7 +42,9 @@ function setup() {
   }
 
   var ref = database.ref('drawings');
+  //for to list data
   ref.on('value', gotData, errData);
+  //ref.on('value', errData);
   
 }
 
@@ -82,9 +84,15 @@ function draw() {
 }
 
 function saveDrawing(){
+  firebase.auth().signInAnonymously().catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
   var ref= database.ref('drawings');
   var data = {
-    name: "Doo",
+    name: "testy",
     drawing: drawing
   }
   var result = ref.push(data, dataSent);
@@ -93,7 +101,7 @@ function saveDrawing(){
     console.log(status);
   }
 }
-//13:25 in video ;)
+//for to list data
 // Initialize Firebase
 function gotData(data){
 
