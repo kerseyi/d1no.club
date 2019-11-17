@@ -2,15 +2,24 @@
 
 var database;
 var drawing = [];
+var currentPath = [];
 var isDrawing = false;
 
 function setup() {
   canvas = createCanvas(500, 500);
+
+  
+
   canvas.mousePressed(startPath);
   canvas.parent('canvascontainer');
   canvas.mouseReleased(endPath);
+
   var saveButton = select('#saveButton');
   saveButton.mousePressed(saveDrawing);
+
+  var clearButton = select('#clearButton');
+  clearButton.mousePressed(clearDrawing);
+
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyCHpEE0BJ4VJeozU7pGxoeD95hti0dTcLM",
@@ -24,22 +33,16 @@ function setup() {
   };
   firebase.initializeApp(firebaseConfig);
   database = firebase.database();
-   console.log(firebase);
- 
-  /*canvas.mousePressed(startPath);
-  canvas.parent('canvascontainer');
-  canvas.mouseReleased(endPath);
 
-  var saveButton = select('#saveButton');
-  saveButton.mousePressed(saveDrawing);
+  var params = getURLParams();
+  console.log(params);
+  if (params.id) {
+    console.log(params.id);
+    showDrawing(params.id);
+  }
 
-  var clearButton = select('#clearButton');
-  clearButton.mousePressed(clearDrawing);*/
-
-
-
-  
-  
+  var ref = database.ref('drawings');
+  ref.on('value', gotData, errData);
   
 }
 
@@ -54,7 +57,7 @@ function endPath() {
 }
 
 function draw() {
-  background(0);
+  background(255);
   if(isDrawing) {
     var point = {
       x: mouseX,
@@ -63,7 +66,7 @@ function draw() {
     currentPath.push(point);
   }
   
-  stroke(255);
+  stroke(0);
   strokeWeight(4);
   noFill();
   for (var i = 0; i < drawing.length; i++){
@@ -92,81 +95,14 @@ function saveDrawing(){
 }
 //13:25 in video ;)
 // Initialize Firebase
-  
+function gotData(data){
 
+  //clear the listing
 
-
-  /*var params = getURLParams();
-  console.log(params);
-  if (params.id) {
-    console.log(params.id);
-    showDrawing(params.id);
-  }
-
-
-  var ref = database.ref('drawings');
-  ref.on('value', gotData, errData);
-}
-
-function startPath() {
-  isDrawing = true;
-  currentPath = [];
-  drawing.push(currentPath);
-}
-
-function endPath() {
-  isDrawing = false;
-}
-
-function draw() {
-  background(0);
-
-  if (isDrawing) {
-    var point = {
-      x: mouseX,
-      y: mouseY
-    }
-    currentPath.push(point);
-  }
-
-  stroke(255);
-  strokeWeight(4);
-  noFill();
-  for (var i = 0; i < drawing.length; i++) {
-    var path = drawing[i];
-    beginShape();
-    for (var j = 0; j < path.length; j++) {
-      vertex(path[j].x, path[j].y)
-    }
-    endShape();
-  }
-
-
-}
-
-
-function saveDrawing() {
-  var ref = database.ref('drawings');
-  var data = {
-    name: "Dan",
-    drawing: drawing
-  }
-  var result = ref.push(data, dataSent);
-  console.log(result.key);
-
-  function dataSent(err, status) {
-    console.log(status);
-  }
-}
-
-function gotData(data) {
-
-  // clear the listing
   var elts = selectAll('.listing');
-  for (var i = 0; i < elts.length; i++) {
+  for (var i = 0; i < elts.length; i++){
     elts[i].remove();
   }
-
   var drawings = data.val();
   var keys = Object.keys(drawings);
   for (var i = 0; i < keys.length; i++) {
@@ -180,19 +116,20 @@ function gotData(data) {
 
     var perma = createA('?id=' + key, 'permalink');
     perma.parent(li);
-    perma.style('padding', '4px');
+    perma.style('padding', '10px');
 
-    li.parent('drawinglist');
+    li.parent('drawingList');
   }
+
 }
 
-function errData(err) {
+function errData(err){
   console.log(err);
 }
 
 function showDrawing(key) {
-  //console.log(arguments);
-  if (key instanceof MouseEvent) {
+  console.log(arguments);
+  if (!key) {
     key = this.html();
   }
 
@@ -207,7 +144,6 @@ function showDrawing(key) {
 
 }
 
-
 function clearDrawing() {
   drawing = [];
-}*/
+}
