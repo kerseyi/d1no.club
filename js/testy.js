@@ -13,9 +13,9 @@ function setup() {
   checkbox = createCheckbox('Erase', false);
   c = color(255, 0, 0);
   background(255);
-  colorMode(RGB)
+  colorMode(RGB);
   createColorPicker();
-  
+
   var saveButton = select('#saveButton');
   saveButton.mousePressed(saveDrawing);
   //console.log(dataURL);
@@ -86,7 +86,7 @@ function mouseDragged() {
 
 function changeBG() {
   background(255);
-  createColorPicker()
+  createColorPicker();
 }
 
 function createColorPicker() {
@@ -132,7 +132,7 @@ function stampRectangle(c){
 }
 
 function eraserSwitch(){
- // 
+ //
 }
 
 function saveDrawing(){
@@ -204,5 +204,3 @@ function showDrawing(key) {
   }
 
 }
-
-
