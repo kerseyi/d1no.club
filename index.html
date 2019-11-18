@@ -1,28 +1,54 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
-  <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+   <!-- <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script> 
+ <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
-  <script language="javascript" type="text/javascript" src="sketch.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+  
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-
-  <div id ="canvascontainer"></div>
-  <br>
-  <div>
-    <button id="saveButton">Save!</button>
-    <button id="clearButton">Clear!</button>
+  <script language="javascript" type="text/javascript" src="js/testy.js"></script>
+  <button id="saveButton">save!</button>
+  <div id="pickercontainer" ></div>
+  <!-- <div class="sidebar">
+  <ul>
+    <li>
+      <label for="color">Color:</label>
+      <input type="color" id="color"/>
+    </li>
+    <li>
+      <label for="weight">Stroke:</label>
+      <input type="number" id="weight" min="2" max="200" value="3"/>
+    </li>
+    <li>
+      <button id="clear"><i class="fa fa-trash"></i></button>
+    </li>
+  </ul>
   </div>
+  
+  <footer>
+  <p>
+    shit
+  </p>
+  </footer> -->
+<!--<div id ="canvascontainer"></div>
+  
+  <br>
+  
   <div>
     <ol id="drawingList">
       
     </ol>
-  </div>
+  </div> -->
 </body>
 </html>

@@ -1,27 +1,24 @@
-/*  const colorInput = document.getElementById('inputColor');
-const weight = document.getElementById('weight');*/
-
-new P5();
+var radius;
+var c;
 var database;
-var drawing = [];
-var currentPath = [];
-var isDrawing = false;
-
-
+var myCanvas = document.getElementById("defaultCanvas0");
 function setup() {
-  canvas = createCanvas(700, 500);
-  //var dinoName = select('#dinoName').value();
-  canvas.mousePressed(startPath);
+  createCanvas(700, 500);
   //canvas.parent('canvascontainer');
-  canvas.mouseReleased(endPath);
-  var strokeColor = select("#inputColor").value();
-  var strokeWeight = select("#weight").value();
+  createP();
+
+  slider = createSlider(1, 20, 10);
+  eraser = createButton("clear");
+  eraser.mousePressed(changeBG);
+  checkbox = createCheckbox('Erase', false);
+  c = color(255, 0, 0);
+  background(255);
+  colorMode(RGB)
+  createColorPicker();
+  
   var saveButton = select('#saveButton');
   saveButton.mousePressed(saveDrawing);
-  console.log(strokeColor, strokeWeight);
-  var clearButton = select('#clearButton');
-  clearButton.mousePressed(clearDrawing);
-
+  //console.log(dataURL);
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyCHpEE0BJ4VJeozU7pGxoeD95hti0dTcLM",
@@ -49,48 +46,98 @@ function setup() {
   //ref.on('value', errData);
 }
 
-function startPath() {
-  isDrawing = true;
-  currentPath = [];
-  drawing.push(currentPath);
-}
-
-function endPath() {
-  isDrawing = false;
-}
-
 function draw() {
-  strokeColor = "#676890";
-  weight = 50;
-  noFill();
-  
-  background(255);
-  if(isDrawing) {
-    var point = {
-      x: mouseX,
-      y:mouseY,
-      color: strokeColor,
-      weight: strokeWeight
-    };
-    currentPath.push(point);
-   } 
-  for (var i = 0; i < drawing.length; i++){
-    var path = drawing[i];
-    beginShape();
-
-    for (var j = 0; j < path.length; j++){
-      stroke(point.color);
-      strokeWeight(point.weight);
-      vertex(path[j].x,path[j].y);
+  radius = slider.value();
+  /*
+  if (mouseIsPressed && mouseX<400) {
+    for (y = 0; y < height; y++) {
+      for (x = 0; x < width-50; x++) {
+        var distance = dist(x, y, mouseX, mouseY);
+        if (distance < radius) {
+          set(x,y, c);
+        }
+      }
     }
-    endShape();
-    
   }
-  
+      updatePixels()
+  */
 }
 
+function mouseClicked() {
+  if (mouseX > 500) {
+    c = get(mouseX, mouseY);
+checkbox.checked(false);
+  }else{
+    stampRectangle(c);
+  }
+}
+
+function mouseDragged() {
+  if (checkbox.checked()){
+    stroke(255);
+  }else{
+    stroke(c);
+  }
+  if (mouseX < 690) {
+    strokeWeight(slider.value());
+    line(mouseX, mouseY, pmouseX, pmouseY);
+  }
+}
+
+function changeBG() {
+  background(255);
+  createColorPicker()
+}
+
+function createColorPicker() {
+  colorPicker = createImage(100, height);
+  var myWidth = colorPicker.width/3;
+  //colorPicker.parent('pickercontainer');
+  colorPicker.loadPixels();
+  from = color(0, 255, 0);
+  to = color(255, 0, 0);
+  console.log(hue(from));
+  for (var y = 0; y < height; y++) {
+    for (x = 0; x < myWidth; x++) {
+      color1 = lerpColor(from, to, y / height);
+      colorPicker.set(x, y, color1);
+    }
+  }
+  from = color(0, 0, 255);
+  to = color(0, 255, 0);
+  console.log(hue(from));
+  for (var y = 0; y < height; y++) {
+    for (x = myWidth; x < myWidth* 2; x++) {
+      color1 = lerpColor(from, to, y / height);
+      colorPicker.set(x, y, color1);
+    }
+  }
+  from = color(255, 0, 0);
+  to = color(0, 255, 255);
+  console.log(hue(from));
+  for (var y = 0; y < height; y++) {
+    for (x = myWidth*2; x < myWidth * 3; x++) {
+      color1 = lerpColor(from, to, y / height);
+      colorPicker.set(x, y, color1);
+    }
+  }
+  colorPicker.updatePixels();
+  image(colorPicker, 800, 0);
+}
+
+function stampRectangle(c){
+  fill(c);
+  noStroke();
+  ellipse(mouseX,mouseY,slider.value(),slider.value());
+}
+
+function eraserSwitch(){
+ // 
+}
 
 function saveDrawing(){
+  var dataURL = canvas.toDataURL('image/png', 0.5);
+  console.log(dataURL);
   firebase.auth().signInAnonymously().catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -99,8 +146,7 @@ function saveDrawing(){
   });
   var ref= database.ref('drawings');
   var data = {
-    name: "color",
-    drawing: drawing
+    drawing: dataURL
   }
   var result = ref.push(data, dataSent);
   console.log(result.key);
@@ -159,6 +205,4 @@ function showDrawing(key) {
 
 }
 
-function clearDrawing() {
-  drawing = [];
-}
+
