@@ -3,16 +3,16 @@ var c;
 var database;
 var myCanvas = document.getElementById("defaultCanvas0");
 function setup() {
-  createCanvas(700, 500);
+  var canvas = createCanvas(700, 500);
   canvas.parent('canvascontainer');
   createP();
 
-  slider = createSlider(1, 20, 10);
+  var slider = createSlider(1, 20, 10);
   slider.parent('sliders');
-  eraser = createButton("clear");
+  var eraser = createButton("clear");
   eraser.mousePressed(changeBG);
   eraser.parent('clearbutton');
-  checkbox = createCheckbox('Erase', false);
+  var checkbox = createCheckbox('Erase', false);
   checkbox.parent('eraserbutton');
   c = color(255, 0, 0);
   background(255);
