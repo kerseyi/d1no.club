@@ -4,13 +4,16 @@ var database;
 var myCanvas = document.getElementById("defaultCanvas0");
 function setup() {
   createCanvas(700, 500);
-  //canvas.parent('canvascontainer');
+  canvas.parent('canvascontainer');
   createP();
 
   slider = createSlider(1, 20, 10);
+  slider.parent('sliders');
   eraser = createButton("clear");
   eraser.mousePressed(changeBG);
+  eraser.parent('clearbutton');
   checkbox = createCheckbox('Erase', false);
+  checkbox.parent('eraserbutton');
   c = color(255, 0, 0);
   background(255);
   colorMode(RGB);
@@ -78,7 +81,7 @@ function mouseDragged() {
   }else{
     stroke(c);
   }
-  if (mouseX < 690) {
+  if (mouseX < 700) {
     strokeWeight(slider.value());
     line(mouseX, mouseY, pmouseX, pmouseY);
   }
