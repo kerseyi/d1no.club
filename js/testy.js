@@ -3,10 +3,8 @@ var c;
 var database;
 var myCanvas = document.getElementById("defaultCanvas0");
 function setup() {
-  var mainCanvas = createCanvas(700, 500);
-  mainCanvas.parent('canvascontainer');
-  createP();
-
+  canvas = createCanvas(700, 500);
+  //mainCanvas.parent('canvasContainer');
   var slider = createSlider(1, 20, 10);
   slider.parent('sliders');
   var eraser = createButton("clear");
@@ -139,7 +137,7 @@ function eraserSwitch(){
 }
 
 function saveDrawing(){
-  var dataURL = mainCanvas.toDataURL('image/png', 0.5);
+  var dataURL = canvas.toDataURL('image/png', 0.5);
   console.log(dataURL);
   firebase.auth().signInAnonymously().catch(function(error) {
     // Handle Errors here.
