@@ -3,15 +3,15 @@ var c;
 var database;
 var myCanvas = document.getElementById("defaultCanvas0");
 function setup() {
-  canvas = createCanvas(700, 500);
+  createCanvas(700, 500);
   //mainCanvas.parent('canvasContainer');
-  var slider = createSlider(1, 20, 10);
-  slider.parent('sliders');
-  var eraser = createButton("clear");
+  slider = createSlider(1, 20, 10);
+  //slider.parent('sliders');
+  eraser = createButton("clear");
   eraser.mousePressed(changeBG);
-  eraser.parent('clearbutton');
-  var checkbox = createCheckbox('Erase', false);
-  checkbox.parent('eraserbutton');
+  //eraser.parent('clearbutton');
+  checkbox = createCheckbox('Erase', false);
+  //checkbox.parent('eraserbutton');
   c = color(255, 0, 0);
   background(255);
   colorMode(RGB);
@@ -123,7 +123,7 @@ function createColorPicker() {
     }
   }
   colorPicker.updatePixels();
-  image(colorPicker, 800, 0);
+  image(colorPicker, 600, 0);
 }
 
 function stampRectangle(c){
