@@ -1,22 +1,29 @@
 var radius;
 var c;
 var database;
-var myCanvas = document.getElementById("defaultCanvas0");
+//var myCanvas = document.getElementById("defaultCanvas0");
 function setup() {
-  createCanvas(700, 500);
+  var canvas = createCanvas(700, 500);
+  canvas.parent('canvasContainer');
+  canvas.id('main');
+  //saveDino = createGraphics(600,500);
   //mainCanvas.parent('canvasContainer');
-  slider = createSlider(1, 20, 10);
-  //slider.parent('sliders');
-  eraser = createButton("clear");
-  eraser.mousePressed(changeBG);
-  //eraser.parent('clearbutton');
-  checkbox = createCheckbox('Erase', false);
-  //checkbox.parent('eraserbutton');
+ var secondCanvas = document.createElement('canvas'); 
+secondCanvas.width = 600;
+secondCanvas.height = 500;
+/*secondCanvas.getContext('2d').drawImage(canvas,0,0,700,500,0,0,600, 500);*/
+
+
+  slider = select('#bWidth');
+  clearBtn = select("#clearButton");
+  clearBtn.mousePressed(changeBG);
+  checkbox = select('#eraseBox');
   c = color(255, 0, 0);
   background(255);
   colorMode(RGB);
   createColorPicker();
-
+  var downloadButton = select('#downloadButton');
+  downloadButton.mousePressed(downloadDrawing); 
   var saveButton = select('#saveButton');
   saveButton.mousePressed(saveDrawing);
   //console.log(dataURL);
@@ -49,6 +56,7 @@ function setup() {
 
 function draw() {
   radius = slider.value();
+  //image(saveDino, 600, 500);
   /*
   if (mouseIsPressed && mouseX<400) {
     for (y = 0; y < height; y++) {
@@ -79,7 +87,7 @@ function mouseDragged() {
   }else{
     stroke(c);
   }
-  if (mouseX < 700) {
+  if (mouseX < 600) {
     strokeWeight(slider.value());
     line(mouseX, mouseY, pmouseX, pmouseY);
   }
@@ -91,7 +99,10 @@ function changeBG() {
 }
 
 function createColorPicker() {
-  colorPicker = createImage(100, height);
+   //var colorPickerCanvas = createCanvas(100, 500);
+  var colorPicker = createImage(100, height);
+  //colorPicker.parent('colorPickerContainer');
+  
   var myWidth = colorPicker.width/3;
   //colorPicker.parent('pickercontainer');
   colorPicker.loadPixels();
@@ -137,7 +148,7 @@ function eraserSwitch(){
 }
 
 function saveDrawing(){
-  var dataURL = canvas.toDataURL('image/png', 0.5);
+  var dataURL = secondCanvas.toDataURL('image/png', 0.5);
   console.log(dataURL);
   firebase.auth().signInAnonymously().catch(function(error) {
     // Handle Errors here.
@@ -205,3 +216,62 @@ function showDrawing(key) {
   }
 
 }
+
+function downloadDrawing() {
+  //image(colorPicker, 1000,0);
+  save(saveDino, 'jpg');
+}
+
+// The crop function
+var crop = function(canvas, offsetX, offsetY, width, height, callback) {
+  // create an in-memory canvas
+  var buffer = document.createElement('canvas');
+  var b_ctx = buffer.getContext('2d');
+  // set its width/height to the required ones
+  buffer.width = 600;
+  buffer.height = 500;
+  // draw the main canvas on our buffer one
+  // drawImage(source, source_X, source_Y, source_Width, source_Height, 
+  //  dest_X, dest_Y, dest_Width, dest_Height)
+  b_ctx.drawImage(canvas, 0, 0, 700, 500,
+                  0, 0, buffer.width, buffer.height);
+  // now call the callback with the dataURL of our buffer canvas
+  callback(buffer.toDataURL());
+};
+
+
+// #main canvas Part
+
+var canvas = document.getElementById('main');
+var img = new Image();
+img.crossOrigin = "Anonymous";
+
+img.onload = function() {
+  canvas.width = this.width;
+  canvas.height = this.height;
+  canvas.getContext('2d').drawImage(this, 0, 0);
+  // set a little timeout before calling our cropping thing
+  setTimeout(function() {
+    crop(canvas, 100, 70, 70, 70, callback)
+  }, 1000);
+};
+
+//img.src = "https://dl.dropboxusercontent.com/s/1alt1303g9zpemd/UFBxY.png";
+
+// what to do with the dataURL of our cropped image
+var callback = function(dataURL) {
+  ;
+}
+/*
+{
+  "rules": {
+    
+    ".write": "auth != null",
+    "drawings": {
+       "$uid": {
+         ".read": "$uid === 'c6ixqlhgt4gxxV8VnjRb6F8YmgS2'",
+         ".write": "!data.exists()"
+       }
+     }
+  }
+}*/

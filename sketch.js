@@ -9,10 +9,11 @@ var isDrawing = false;
 
 
 function setup() {
-  canvas = createCanvas(700, 500);
+  var canvas = createCanvas(700, 500);
+  canvas.parent('#canvasContainer');
   //var dinoName = select('#dinoName').value();
   canvas.mousePressed(startPath);
-  //canvas.parent('canvascontainer');
+  //
   canvas.mouseReleased(endPath);
   var strokeColor = select("#inputColor").value();
   var strokeWeight = select("#weight").value();
