@@ -3,7 +3,7 @@ var c = 255;
 var database;
 //var myCanvas = document.getElementById("defaultCanvas0");
 function setup() {
-  let canvas = createCanvas(700, 500);
+  let canvas = createCanvas(1000, 600);
   canvas.parent('canvasContainer');
   canvas.id('main');
   //saveDino = createGraphics(600,500);
@@ -93,7 +93,7 @@ function mouseDragged() {
   }else{
     stroke(c);
   }
-  if (mouseX < 700 && mouseY < 500) {
+  if (mouseX < 1000 && mouseY < 600) {
     strokeWeight(slider.value());
     line(mouseX, mouseY, pmouseX, pmouseY);
   }
@@ -154,7 +154,7 @@ function eraserSwitch(){
 }
 
 function saveDrawing(){
-  var dataURL = canvas.toDataURL('image/png', 0.5);
+  var dataURL = canvas.toDataURL('image/svg+xml');
   console.log(dataURL);
   firebase.auth().signInAnonymously().catch(function(error) {
     // Handle Errors here.
