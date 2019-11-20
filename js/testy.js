@@ -75,13 +75,17 @@ function draw() {
 }
 
 /*function mouseClicked() {
-  if (mouseX > 500) {
+  if (mouseX > 700) {
     c = get(mouseX, mouseY);
-checkbox.checked(false);
+    checkbox.checked(false);
   }else{
     stampRectangle(c);
   }
 }*/
+
+function mouseReleased() {
+  locked = false;
+}
 
 function mouseDragged() {
   if (checkbox.checked()){
@@ -89,7 +93,7 @@ function mouseDragged() {
   }else{
     stroke(c);
   }
-  if (mouseX < 700) {
+  if (mouseX < 700 && mouseY < 500) {
     strokeWeight(slider.value());
     line(mouseX, mouseY, pmouseX, pmouseY);
   }

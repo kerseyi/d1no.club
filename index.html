@@ -38,34 +38,31 @@
     </div>
     <div class="row">
       <div class="row">
-      <div id="sliders" class="col s9">
+      <div id="sliders" class="col s6">
           <input type="range" id="bWidth" name="borderWidth" 
          min="2" max="25" value="10" step="2">
         <label for="bWidth">Brush Width</label>
       </div>
-      <div class="col s3" id="strokeColor"></div>
-    </div>
       <div class="col s3">
-            <button id="clearButton" class="waves-effect waves-light btn-large">Clear</button>
-      </div>
-      
-      <div  class="col s3">
-          <button id="saveButton" class="waves-effect waves-light btn-large">Save!</button>
-      </div>
-      <div class="col s3">
-            <button id="downloadButton" class="waves-effect waves-light btn-large">Download!</button>
-      </div>
-      
-    </div>
-    <div class="col s3">
-        <label>
+        <label for "eraseBox">Eraser!</label>
         <input id="eraseBox" type="checkbox" class="filled-in" />
         <span>Erase!</span>
       </label>
       </div>
-      <div style="visibility: hidden;">
-        <canvas id="secondCanvas"></canvas>
+      <div class="col s3" id="strokeColor"></div>
+    </div>
+      <div class="col s4">
+            <button id="clearButton" class="waves-effect waves-light btn-large">Clear</button>
       </div>
+      
+      <div  class="col s4">
+          <button id="saveButton" class="waves-effect waves-light btn-large">Save!</button>
+      </div>
+      <div class="col s4">
+            <button id="downloadButton" class="waves-effect waves-light btn-large">Download!</button>
+      </div>
+      
+    </div>
     
     <ol id="listing"></ol>
 </div>
