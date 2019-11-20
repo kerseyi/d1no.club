@@ -1,16 +1,13 @@
 var radius;
-var c;
+var c = 255;
 var database;
 //var myCanvas = document.getElementById("defaultCanvas0");
 function setup() {
-  var canvas = createCanvas(700, 500);
+  let canvas = createCanvas(700, 500);
   canvas.parent('canvasContainer');
   canvas.id('main');
   //saveDino = createGraphics(600,500);
   //mainCanvas.parent('canvasContainer');
- var secondCanvas = document.createElement('canvas'); 
-secondCanvas.width = 600;
-secondCanvas.height = 500;
 /*secondCanvas.getContext('2d').drawImage(canvas,0,0,700,500,0,0,600, 500);*/
 
 
@@ -18,10 +15,13 @@ secondCanvas.height = 500;
   clearBtn = select("#clearButton");
   clearBtn.mousePressed(changeBG);
   checkbox = select('#eraseBox');
-  c = color(255, 0, 0);
+  color_picker = createColorPicker("black");
+  color_picker.parent("strokeColor");
+  
+  console.log(c);
   background(255);
   colorMode(RGB);
-  createColorPicker();
+  //createColorPicker();
   var downloadButton = select('#downloadButton');
   downloadButton.mousePressed(downloadDrawing); 
   var saveButton = select('#saveButton');
@@ -56,6 +56,8 @@ secondCanvas.height = 500;
 
 function draw() {
   radius = slider.value();
+  c= color_picker.color()
+
   //image(saveDino, 600, 500);
   /*
   if (mouseIsPressed && mouseX<400) {
@@ -72,14 +74,14 @@ function draw() {
   */
 }
 
-function mouseClicked() {
+/*function mouseClicked() {
   if (mouseX > 500) {
     c = get(mouseX, mouseY);
 checkbox.checked(false);
   }else{
     stampRectangle(c);
   }
-}
+}*/
 
 function mouseDragged() {
   if (checkbox.checked()){
@@ -87,7 +89,7 @@ function mouseDragged() {
   }else{
     stroke(c);
   }
-  if (mouseX < 600) {
+  if (mouseX < 700) {
     strokeWeight(slider.value());
     line(mouseX, mouseY, pmouseX, pmouseY);
   }
@@ -95,10 +97,10 @@ function mouseDragged() {
 
 function changeBG() {
   background(255);
-  createColorPicker();
+  //createColorPicker();
 }
 
-function createColorPicker() {
+/*function createColorPicker() {
    //var colorPickerCanvas = createCanvas(100, 500);
   var colorPicker = createImage(100, height);
   //colorPicker.parent('colorPickerContainer');
@@ -135,7 +137,7 @@ function createColorPicker() {
   }
   colorPicker.updatePixels();
   image(colorPicker, 600, 0);
-}
+}*/
 
 function stampRectangle(c){
   fill(c);
@@ -148,7 +150,7 @@ function eraserSwitch(){
 }
 
 function saveDrawing(){
-  var dataURL = secondCanvas.toDataURL('image/png', 0.5);
+  var dataURL = canvas.toDataURL('image/png', 0.5);
   console.log(dataURL);
   firebase.auth().signInAnonymously().catch(function(error) {
     // Handle Errors here.
@@ -219,48 +221,7 @@ function showDrawing(key) {
 
 function downloadDrawing() {
   //image(colorPicker, 1000,0);
-  save(saveDino, 'jpg');
-}
-
-// The crop function
-var crop = function(canvas, offsetX, offsetY, width, height, callback) {
-  // create an in-memory canvas
-  var buffer = document.createElement('canvas');
-  var b_ctx = buffer.getContext('2d');
-  // set its width/height to the required ones
-  buffer.width = 600;
-  buffer.height = 500;
-  // draw the main canvas on our buffer one
-  // drawImage(source, source_X, source_Y, source_Width, source_Height, 
-  //  dest_X, dest_Y, dest_Width, dest_Height)
-  b_ctx.drawImage(canvas, 0, 0, 700, 500,
-                  0, 0, buffer.width, buffer.height);
-  // now call the callback with the dataURL of our buffer canvas
-  callback(buffer.toDataURL());
-};
-
-
-// #main canvas Part
-
-var canvas = document.getElementById('main');
-var img = new Image();
-img.crossOrigin = "Anonymous";
-
-img.onload = function() {
-  canvas.width = this.width;
-  canvas.height = this.height;
-  canvas.getContext('2d').drawImage(this, 0, 0);
-  // set a little timeout before calling our cropping thing
-  setTimeout(function() {
-    crop(canvas, 100, 70, 70, 70, callback)
-  }, 1000);
-};
-
-//img.src = "https://dl.dropboxusercontent.com/s/1alt1303g9zpemd/UFBxY.png";
-
-// what to do with the dataURL of our cropped image
-var callback = function(dataURL) {
-  ;
+  saveCanvas(canvas, 'd1no' + int(random(20)),'jpg');
 }
 /*
 {
