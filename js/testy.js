@@ -9,15 +9,15 @@ function setup() {
   //saveDino = createGraphics(600,500);
   //mainCanvas.parent('canvasContainer');
 /*secondCanvas.getContext('2d').drawImage(canvas,0,0,700,500,0,0,600, 500);*/
-
-
+  
+  
   slider = select('#bWidth');
   clearBtn = select("#clearButton");
   clearBtn.mousePressed(changeBG);
   checkbox = select('#eraseBox');
   color_picker = createColorPicker("black");
   color_picker.parent("strokeColor");
-  
+  //console.log(submitTime);
   console.log(c);
   background(255);
   colorMode(RGB);
@@ -154,7 +154,8 @@ function eraserSwitch(){
 }
 
 function saveDrawing(){
-  var dataURL = canvas.toDataURL('image/svg+xml');
+  var submitTime = month() + "/" + day() +" " + hour() + ":"+ minute();
+  var dataURL = canvas.toDataURL('image/png');
   console.log(dataURL);
   firebase.auth().signInAnonymously().catch(function(error) {
     // Handle Errors here.
@@ -164,7 +165,8 @@ function saveDrawing(){
   });
   var ref= database.ref('drawings');
   var data = {
-    drawing: dataURL
+    drawing: dataURL,
+    time: submitTime
   }
   var result = ref.push(data, dataSent);
   console.log(result.key);
@@ -192,7 +194,6 @@ function gotData(data){
     var ahref = createA('#', key);
     ahref.mousePressed(showDrawing);
     ahref.parent(li);
-
     var perma = createA('?id=' + key, 'permalink');
     perma.parent(li);
     perma.style('padding', '10px');
@@ -207,7 +208,7 @@ function errData(err){
 }
 
 function showDrawing(key) {
-  console.log(arguments);
+  //console.log(drawing);
   if (!key) {
     key = this.html();
   }
@@ -218,7 +219,7 @@ function showDrawing(key) {
   function oneDrawing(data) {
     var dbdrawing = data.val();
     drawing = dbdrawing.drawing;
-    //console.log(drawing);
+    console.log(drawing);
   }
 
 }
