@@ -18,6 +18,9 @@ label {
 button {
 	width: 100%;
 }
+p {
+	font-size: 16px;
+}
 .btn-large {
 	font-size: 20px;
 }
