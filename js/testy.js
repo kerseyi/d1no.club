@@ -2,6 +2,7 @@ var radius;
 var c = 255;
 var database;
 let dinosaurs;
+
 function preload() {
   // Get the dinos!
   let url ='json/dinos.json';
@@ -11,7 +12,10 @@ function preload() {
 
 function setup() {
   let canvas = createCanvas(1000, 600);
-  resizeCanvas(windowWidth /1.45, windowHeight /1.5);
+  let canvasWidth = windowWidth /1.45;
+let canvasHeight = windowHeight /1.5;
+  resizeCanvas(canvasWidth, canvasHeight);
+
   canvas.parent('canvasContainer');
   canvas.id('main');
   slider = select('#bWidth');
@@ -75,7 +79,7 @@ function mouseDragged() {
   }else{
     stroke(c);
   }
-  if (mouseX < 1000 && mouseY < 600) {
+  if (mouseX < (windowWidth /1.45) && mouseY < (windowHeight /1.5)) {
     strokeWeight(slider.value());
     line(mouseX, mouseY, pmouseX, pmouseY);
   }
