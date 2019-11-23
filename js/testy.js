@@ -9,21 +9,17 @@ function preload() {
   console.log(dinosaurs);
 }
 
-//var myCanvas = document.getElementById("defaultCanvas0");
 function setup() {
   let canvas = createCanvas(1000, 600);
   resizeCanvas(windowWidth /1.45, windowHeight /1.5);
   canvas.parent('canvasContainer');
   canvas.id('main');
-  //saveDino = createGraphics(600,500);
-  //mainCanvas.parent('canvasContainer');
-/*secondCanvas.getContext('2d').drawImage(canvas,0,0,700,500,0,0,600, 500);*/
-  /*let completionCode = 2;
-  completionCode.parent('#completeCode');*/
   slider = select('#bWidth');
   clearBtn = select("#clearButton");
   clearBtn.mousePressed(changeBG);
   checkbox = select('#eraseBox');
+  drawAgain = select("#drawAgainButton");
+  drawAgain.mousePressed(changeBG);
   color_picker = createColorPicker("black");
   color_picker.parent("strokeColor");
   //console.log(submitTime);
@@ -66,31 +62,8 @@ function setup() {
 function draw() {
   radius = slider.value();
   c= color_picker.color()
-
-  //image(saveDino, 600, 500);
-  /*
-  if (mouseIsPressed && mouseX<400) {
-    for (y = 0; y < height; y++) {
-      for (x = 0; x < width-50; x++) {
-        var distance = dist(x, y, mouseX, mouseY);
-        if (distance < radius) {
-          set(x,y, c);
-        }
-      }
-    }
-  }
-      updatePixels()
-  */
 }
 
-/*function mouseClicked() {
-  if (mouseX > 700) {
-    c = get(mouseX, mouseY);
-    checkbox.checked(false);
-  }else{
-    stampRectangle(c);
-  }
-}*/
 
 function mouseReleased() {
   locked = false;
@@ -113,44 +86,6 @@ function changeBG() {
   //createColorPicker();
 }
 
-/*function createColorPicker() {
-   //var colorPickerCanvas = createCanvas(100, 500);
-  var colorPicker = createImage(100, height);
-  //colorPicker.parent('colorPickerContainer');
-  
-  var myWidth = colorPicker.width/3;
-  //colorPicker.parent('pickercontainer');
-  colorPicker.loadPixels();
-  from = color(0, 255, 0);
-  to = color(255, 0, 0);
-  console.log(hue(from));
-  for (var y = 0; y < height; y++) {
-    for (x = 0; x < myWidth; x++) {
-      color1 = lerpColor(from, to, y / height);
-      colorPicker.set(x, y, color1);
-    }
-  }
-  from = color(0, 0, 255);
-  to = color(0, 255, 0);
-  console.log(hue(from));
-  for (var y = 0; y < height; y++) {
-    for (x = myWidth; x < myWidth* 2; x++) {
-      color1 = lerpColor(from, to, y / height);
-      colorPicker.set(x, y, color1);
-    }
-  }
-  from = color(255, 0, 0);
-  to = color(0, 255, 255);
-  console.log(hue(from));
-  for (var y = 0; y < height; y++) {
-    for (x = myWidth*2; x < myWidth * 3; x++) {
-      color1 = lerpColor(from, to, y / height);
-      colorPicker.set(x, y, color1);
-    }
-  }
-  colorPicker.updatePixels();
-  image(colorPicker, 600, 0);
-}*/
 
 function stampRectangle(c){
   fill(c);
@@ -250,19 +185,7 @@ function downloadDrawing() {
   //image(colorPicker, 1000,0);
   saveCanvas(canvas, 'd1no' + int(random(20)),'jpg');
 }
-/*
-{
-  "rules": {
-    
-    ".write": "auth != null",
-    "drawings": {
-       "$uid": {
-         ".read": "$uid === 'c6ixqlhgt4gxxV8VnjRb6F8YmgS2'",
-         ".write": "!data.exists()"
-       }
-     }
-  }
-}*/
+
 //modals!
 $(document).ready(function(){
     $('#welcomeModal').modal();
