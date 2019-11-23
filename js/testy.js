@@ -3,12 +3,17 @@ var c = 255;
 var database;
 let dinosaurs;
 
-function preload() {
+/*function preload() {
   // Get the dinos!
   let url ='json/dinos.json';
   dinosaurs = loadJSON(url);
+  let dinoCode = dinosaurs[0];
+  let dinoDrawing = dinosaurs[1];
+  let dinoTime = dinosaurs[2];
   console.log(dinosaurs);
-}
+  console.log(dinoDrawing);
+  console.log(dinoTime);
+}*/
 
 function setup() {
   let canvas = createCanvas(1000, 600);
