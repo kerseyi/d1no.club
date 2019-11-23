@@ -18,6 +18,13 @@ label {
 button {
 	width: 100%;
 }
+.btn-large {
+	font-size: 20px;
+}
+
+.modal-footer {
+	min-height: 10vh;
+}
 /* 
 #eraseBox span {
 	width: 20px;

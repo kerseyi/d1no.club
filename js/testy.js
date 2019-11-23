@@ -1,6 +1,14 @@
 var radius;
 var c = 255;
 var database;
+let dinosaurs;
+function preload() {
+  // Get the dinos!
+  let url ='json/dinos.json';
+  dinosaurs = loadJSON(url);
+  console.log(dinosaurs);
+}
+
 //var myCanvas = document.getElementById("defaultCanvas0");
 function setup() {
   let canvas = createCanvas(1000, 600);
@@ -9,8 +17,8 @@ function setup() {
   //saveDino = createGraphics(600,500);
   //mainCanvas.parent('canvasContainer');
 /*secondCanvas.getContext('2d').drawImage(canvas,0,0,700,500,0,0,600, 500);*/
-  
-  
+  /*let completionCode = 2;
+  completionCode.parent('#completeCode');*/
   slider = select('#bWidth');
   clearBtn = select("#clearButton");
   clearBtn.mousePressed(changeBG);
@@ -154,8 +162,14 @@ function eraserSwitch(){
 }
 
 function saveDrawing(){
+  var completionCode = 'D1no_' + int(random(999)) + int(millis()) + "_" + day() + minute();
   var submitTime = month() + "/" + day() +" " + hour() + ":"+ minute();
   var dataURL = canvas.toDataURL('image/png');
+  var compCode = createSpan(completionCode);
+  compCode.parent(completeCode);
+  $('#thanksModal').modal();
+  $('#thanksModal').modal('open'); 
+
   console.log(dataURL);
   firebase.auth().signInAnonymously().catch(function(error) {
     // Handle Errors here.
@@ -166,7 +180,8 @@ function saveDrawing(){
   var ref= database.ref('drawings');
   var data = {
     drawing: dataURL,
-    time: submitTime
+    time: submitTime,
+    code: completionCode
   }
   var result = ref.push(data, dataSent);
   console.log(result.key);
@@ -201,6 +216,12 @@ function gotData(data){
     li.parent('drawingList');
   }
 
+}
+
+function listDinos(){
+  for(var i = 0; i < dinos.length; i++){
+
+  }
 }
 
 function errData(err){
@@ -241,3 +262,8 @@ function downloadDrawing() {
      }
   }
 }*/
+//modals!
+$(document).ready(function(){
+    $('#welcomeModal').modal();
+    $('#welcomeModal').modal('open'); 
+ });
