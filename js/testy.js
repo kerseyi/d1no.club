@@ -12,6 +12,7 @@ function preload() {
 //var myCanvas = document.getElementById("defaultCanvas0");
 function setup() {
   let canvas = createCanvas(1000, 600);
+  resizeCanvas(windowWidth /1.45, windowHeight /1.5);
   canvas.parent('canvasContainer');
   canvas.id('main');
   //saveDino = createGraphics(600,500);
