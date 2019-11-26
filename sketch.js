@@ -154,6 +154,7 @@ function showDrawing(key) {
 
   function oneDrawing(data) {
     var dbdrawing = data.val();
+    var dinoImg = createImg(dbdrawing);
     drawing = dbdrawing.drawing;
     //console.log(drawing);
   }

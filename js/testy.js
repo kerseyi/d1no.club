@@ -1,19 +1,14 @@
 var radius;
 var c = 255;
 var database;
-let dinosaurs;
+var data;
 
-/*function preload() {
+function preload() {
   // Get the dinos!
-  let url ='json/dinos.json';
-  dinosaurs = loadJSON(url);
-  let dinoCode = dinosaurs[0];
-  let dinoDrawing = dinosaurs[1];
-  let dinoTime = dinosaurs[2];
-  console.log(dinosaurs);
-  console.log(dinoDrawing);
-  console.log(dinoTime);
-}*/
+  data =loadJSON('json/dinos.json');
+  console.log(data);
+}
+
 
 function setup() {
   let canvas = createCanvas(1000, 600);
@@ -32,16 +27,13 @@ let canvasHeight = windowHeight /1.5;
   color_picker = createColorPicker("black");
   color_picker.parent("strokeColor");
   //console.log(submitTime);
-  console.log(c);
+  //console.log(c);
   background(255);
   colorMode(RGB);
-  //createColorPicker();
   var downloadButton = select('#downloadButton');
   downloadButton.mousePressed(downloadDrawing); 
   var saveButton = select('#saveButton');
   saveButton.mousePressed(saveDrawing);
-  //console.log(dataURL);
-  // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyCHpEE0BJ4VJeozU7pGxoeD95hti0dTcLM",
     authDomain: "d1no-club.firebaseapp.com",
@@ -54,18 +46,7 @@ let canvasHeight = windowHeight /1.5;
   };
   firebase.initializeApp(firebaseConfig);
   database = firebase.database();
-
-  var params = getURLParams();
-  console.log(params);
-  if (params.id) {
-    console.log(params.id);
-    showDrawing(params.id);
-  }
-
-  var ref = database.ref('drawings');
-  //for to list data
-  ref.on('value', gotData, errData);
-  //ref.on('value', errData);
+  gotData(data);
 }
 
 function draw() {
@@ -92,7 +73,6 @@ function mouseDragged() {
 
 function changeBG() {
   background(255);
-  //createColorPicker();
 }
 
 
@@ -100,10 +80,6 @@ function stampRectangle(c){
   fill(c);
   noStroke();
   ellipse(mouseX,mouseY,slider.value(),slider.value());
-}
-
-function eraserSwitch(){
- //
 }
 
 function saveDrawing(){
@@ -134,69 +110,42 @@ function saveDrawing(){
     console.log(status);
   }
 }
-//for to list data
-// Initialize Firebase
+
 function gotData(data){
-
-  //clear the listing
-
-  var elts = selectAll('.listing');
-  for (var i = 0; i < elts.length; i++){
-    elts[i].remove();
+  
+  var ul = document.getElementById('dinoList');
+for(var item in data.drawings) {
+  var dinoDrawing = data.drawings[item];
+    var dinoCode = dinoDrawing.code;
+    var dinoURI = dinoDrawing.drawing;
+    var dinoDate = dinoDrawing.time;
+    //console.log(dinoURI);
+    var li = document.createElement('li');
+    //var dinospan = document.createElement('span');
+    //dinospan.textContent = dinoCode;
+    var image = new Image();
+    image.src = dinoURI;
+    image.alt = dinoCode;
+    image.title = dinoDate;
+    li.appendChild(image);
+    //li.appendChild(dinoCode);
+    ul.appendChild(li);
   }
-  var drawings = data.val();
-  var keys = Object.keys(drawings);
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    //console.log(key);
-    var li = createElement('li', '');
-    li.class('listing');
-    var ahref = createA('#', key);
-    ahref.mousePressed(showDrawing);
-    ahref.parent(li);
-    var perma = createA('?id=' + key, 'permalink');
-    perma.parent(li);
-    perma.style('padding', '10px');
-
-    li.parent('drawingList');
-  }
-
-}
-
-function listDinos(){
-  for(var i = 0; i < dinos.length; i++){
-
-  }
+  //li.innerHTML = dinoURI;
 }
 
 function errData(err){
   console.log(err);
 }
 
-function showDrawing(key) {
-  //console.log(drawing);
-  if (!key) {
-    key = this.html();
-  }
-
-  var ref = database.ref('drawings/' + key);
-  ref.once('value', oneDrawing, errData);
-
-  function oneDrawing(data) {
-    var dbdrawing = data.val();
-    drawing = dbdrawing.drawing;
-    console.log(drawing);
-  }
-
-}
-
 function downloadDrawing() {
   //image(colorPicker, 1000,0);
-  saveCanvas(canvas, 'd1no' + int(random(20)),'jpg');
+  saveCanvas(canvas, 'd1no' + int(random(2000)),'jpg');
 }
 
 //modals!
 $(document).ready(function(){
     $('#welcomeModal').modal();
-    $('#welcomeModal').modal('open'); 
+    $('#galleryModal').modal();
+    $('#welcomeModal').modal('open');
  });
