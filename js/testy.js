@@ -5,7 +5,7 @@ var data;
 
 function preload() {
   // Get the dinos!
-  data =loadJSON('json/dinos.json');
+  data =loadJSON('json/dinos1.json');
   console.log(data);
 }
 
@@ -31,7 +31,7 @@ let canvasHeight = windowHeight /1.5;
   background(255);
   colorMode(RGB);
   var downloadButton = select('#downloadButton');
-  downloadButton.mousePressed(downloadDrawing); 
+  downloadButton.mousePressed(downloadDrawing);
   var saveButton = select('#saveButton');
   saveButton.mousePressed(saveDrawing);
   var firebaseConfig = {
@@ -89,7 +89,7 @@ function saveDrawing(){
   var compCode = createSpan(completionCode);
   compCode.parent(completeCode);
   $('#thanksModal').modal();
-  $('#thanksModal').modal('open'); 
+  $('#thanksModal').modal('open');
 
   console.log(dataURL);
   firebase.auth().signInAnonymously().catch(function(error) {
@@ -98,7 +98,7 @@ function saveDrawing(){
     var errorMessage = error.message;
     // ...
   });
-  var ref= database.ref('drawings');
+  var ref= database.ref('drawings2');
   var data = {
     drawing: dataURL,
     time: submitTime,
@@ -112,7 +112,7 @@ function saveDrawing(){
 }
 
 function gotData(data){
-  
+
   var ul = document.getElementById('dinoList');
 for(var item in data.drawings) {
   var dinoDrawing = data.drawings[item];
