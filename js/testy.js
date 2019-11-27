@@ -98,7 +98,7 @@ function saveDrawing(){
     var errorMessage = error.message;
     // ...
   });
-  var ref= database.ref('drawings2');
+  var ref= database.ref('drawings');
   var data = {
     drawing: dataURL,
     time: submitTime,
