@@ -25,7 +25,7 @@ canvas {
 }
 #galleryModal img {
 
-	max-width: 45%;
+	max-width: 30%;
     display: inline-block;
     float: left;
     border: 1px solid black;
