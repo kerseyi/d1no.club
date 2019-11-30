@@ -115,6 +115,7 @@ function gotData(data){
   
   var ul = document.getElementById('dinoList');
 for(var item in data.drawings) {
+  console.log(dinoDrawing);
   var dinoDrawing = data.drawings[item];
     var dinoCode = dinoDrawing.code;
     var dinoURI = dinoDrawing.drawing;
@@ -125,8 +126,8 @@ for(var item in data.drawings) {
     //dinospan.textContent = dinoCode;
     var image = new Image();
     image.src = dinoURI;
-    image.alt = dinoCode;
-    image.title = dinoDate;
+    image.title = dinoCode + " " + dinoDate;
+    //image.alt = dinoDate;
     li.appendChild(image);
     //li.appendChild(dinoCode);
     ul.appendChild(li);
