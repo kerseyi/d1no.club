@@ -5,7 +5,7 @@ var data;
 
 function preload() {
   // Get the dinos!
-  data =loadJSON('json/dinos1.json');
+  data =loadJSON('json/dinos3.json');
   console.log(data);
 }
 
