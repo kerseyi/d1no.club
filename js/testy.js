@@ -144,9 +144,10 @@ function downloadDrawing() {
   saveCanvas(canvas, 'd1no' + int(random(2000)),'jpg');
 }
 
-//modals!
+//materialize stuffs  - modals and tabs
 $(document).ready(function(){
     $('#welcomeModal').modal();
     $('#galleryModal').modal();
     $('#welcomeModal').modal('open');
+    $('.tabs').tabs();
  });

@@ -6,7 +6,7 @@ canvas {
 	height: 50px;
 }
 
-#galleryModal, .modal-fixed-footer{
+#gallery, .modal-fixed-footer{
 	max-height: 95vh;
     height: 100vh;
 }
@@ -17,13 +17,13 @@ canvas {
 }
 
 @media all and (min-width: 700px) {
-  #galleryModal img {
+  #gallery img {
     max-width: 100%;
     width: 100%;
     display: block;
   }
 }
-#galleryModal img {
+#gallery img {
 
 	max-width: 30%;
     display: inline-block;
@@ -60,4 +60,17 @@ p {
 	width: 100%;
 	height: 100%;
 	background: url(img/dinoLoad.png) no-repeat center center fixed;
+}
+
+.tabs {
+	height: 100%;
+}
+.tabs .tab a {
+	font-size: 20px;
+	height: 100%;
+	padding: 6px 24px;
+}
+
+.tabs.tabs-fixed-width .tab{
+	height: 100%;
 }
