@@ -2,11 +2,16 @@ var radius;
 var c = 255;
 var database;
 var data;
+let dinoPix = [];
 
 function preload() {
   // Get the dinos!
-  data =loadJSON('json/dinos3.json');
-  console.log(data);
+  //data =loadJSON('json/dinos3.json');
+  /*for (let i=2; i < 248; i++){
+    dinoPix[i] = loadImage("img/dinoPix/dino_(" + i +").png");
+  }*/
+  
+  //console.log(data);
 }
 
 
@@ -46,12 +51,17 @@ let canvasHeight = windowHeight /1.5;
   };
   firebase.initializeApp(firebaseConfig);
   database = firebase.database();
-  gotData(data);
+  //for loading JSON
+  //gotData(data);
+  //for loading PNG
+  gotData(dinoPix);
+  console.log(dinoPix);
 }
 
 function draw() {
   radius = slider.value();
   c= color_picker.color()
+
 }
 
 
@@ -110,8 +120,8 @@ function saveDrawing(){
     console.log(status);
   }
 }
-
-function gotData(data){
+//for loading JSON
+/*function gotData(data){
 
   var ul = document.getElementById('dinoList');
 for(var item in data.drawings) {
@@ -129,6 +139,30 @@ for(var item in data.drawings) {
     image.title = dinoCode + " " + dinoDate;
     //image.alt = dinoDate;
     li.appendChild(image);
+    //li.appendChild(dinoCode);
+    ul.appendChild(li);
+  }
+  //li.innerHTML = dinoURI;
+}*/
+function gotData(data){
+
+  var ul = document.getElementById('dinoList');
+  for (let i=2; i < 248; i++){
+  //var dinoDrawing = data.drawings[item];
+    //var dinoCode = dinoDrawing.code;
+    //var dinoSrc = random(dinoPix);
+    //var dinoDate = dinoDrawing.time;
+    //console.log(dinoURI);
+    var li = document.createElement('li');
+    //var dinospan = document.createElement('span');
+    //dinospan.textContent = dinoCode;
+    var image = createImg("img/dinoPix/dino_(" + i +").png", "");
+    image.parent(li);
+    //image.src = dinoSrc;
+    //console.log(dinoSrc);
+    //image.title = dinoCode + " " + dinoDate;
+    //image.alt = dinoDate;
+    //li.appendChild(image);
     //li.appendChild(dinoCode);
     ul.appendChild(li);
   }
