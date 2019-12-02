@@ -6,7 +6,7 @@ canvas {
 	height: 50px;
 }
 
-#gallery, .modal-fixed-footer{
+.modal-fixed-footer{
 	max-height: 95vh;
     height: 100vh;
 }
@@ -31,10 +31,13 @@ canvas {
     border: 1px solid black;
     margin: 5px;
 } */
-.grid-item { 
+.grid {
+	width: 100%;
+}
+.grid-item,
+.grid-sizer { 
 	width: 30%; 
-	display: inline-block;
-	float: left;
+	
 }
 
 .container {
@@ -77,4 +80,21 @@ p {
 
 .tabs.tabs-fixed-width .tab{
 	height: 100%;
+}
+
+#dinoList {
+	columns: 20vw;
+	column-gap: 5px; 
+
+}
+
+.dinoGrid{
+	break-inside: avoid-column;
+	//margin-bottom: 0.25rem; 
+	padding: 5px;
+	width: 100%;
+}
+
+.dinoGrid img {
+	width: 100%;
 }

@@ -7,9 +7,9 @@ let dinoPix = [];
 function preload() {
   // Get the dinos!
   //data =loadJSON('json/dinos3.json');
-  /*for (let i=2; i < 248; i++){
+  for (let i=1; i < 248; i++){
     dinoPix[i] = loadImage("img/dinoPix/dino_(" + i +").png");
-  }*/
+  }
   
   //console.log(data);
 }
@@ -17,10 +17,11 @@ function preload() {
 
 function setup() {
   let canvas = createCanvas(1000, 600);
+   let partyCanvas = createCanvas(1000, 600);
   let canvasWidth = windowWidth /1.45;
-let canvasHeight = windowHeight /1.5;
+  let canvasHeight = windowHeight /1.5;
   resizeCanvas(canvasWidth, canvasHeight);
-
+  partyCanvas.parent('partyCanvas');
   canvas.parent('canvasContainer');
   canvas.id('main');
   slider = select('#bWidth');
@@ -31,6 +32,7 @@ let canvasHeight = windowHeight /1.5;
   drawAgain.mousePressed(changeBG);
   color_picker = createColorPicker("black");
   color_picker.parent("strokeColor");
+  
   //console.log(submitTime);
   //console.log(c);
   background(255);
@@ -61,7 +63,7 @@ let canvasHeight = windowHeight /1.5;
 function draw() {
   radius = slider.value();
   c= color_picker.color()
-
+  walkDino();
 }
 
 
@@ -120,6 +122,10 @@ function saveDrawing(){
     console.log(status);
   }
 }
+
+/*function calculateTime() {
+  submitTime.split();
+}*/
 //for loading JSON
 /*function gotData(data){
 
@@ -146,38 +152,32 @@ for(var item in data.drawings) {
 }*/
 function gotData(data){
 
-  var ul = document.getElementById('dinoList');
-  for (let i=2; i < 248; i++){
-  //var dinoDrawing = data.drawings[item];
-    //var dinoCode = dinoDrawing.code;
-    //var dinoSrc = random(dinoPix);
-    //var dinoDate = dinoDrawing.time;
-    //console.log(dinoURI);
-    var li = document.createElement('li');
-
-    //var dinospan = document.createElement('span');
-    //dinospan.textContent = dinoCode;
+  var div = document.getElementById('dinoList');
+  for (let i=1; i < 249; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
-    image.addClass("grid-item");
-    image.parent(li);
-
-    //image.src = dinoSrc;
-    //console.log(dinoSrc);
-    //image.title = dinoCode + " " + dinoDate;
-    //image.alt = dinoDate;
-    //li.appendChild(image);
-    //li.appendChild(dinoCode);
-    ul.appendChild(li);
+    image.addClass("dinoGrid");
+    image.parent(div);
   }
-  //li.innerHTML = dinoURI;
 }
+
+function walkDino(){
+  //var dinoNum = int(random(249));
+  var randomDino = random(dinoPix);
+  console.log(randomDino);
+  var image = createImg("img/dinoPix/dino_(" + 5 +").png", "");
+  for (let i=1; i < 1000; i++){
+    image.position(200 + i, random(20,25));
+  }
+  image.parent(partyCanvas);
+
+  }
+
 
 function errData(err){
   console.log(err);
 }
 
 function downloadDrawing() {
-  //image(colorPicker, 1000,0);
   saveCanvas(canvas, 'd1no' + int(random(2000)),'jpg');
 }
 
@@ -191,8 +191,9 @@ $(document).ready(function(){
 
 //initialize masonry
 
-$('.grid').masonry({
+/*$('.grid').masonry({
   // options
   itemSelector: '.grid-item',
-  columnWidth: 200
-});
+  columnWidth: '.grid-sizer',
+  percentPosition: true
+});*/
