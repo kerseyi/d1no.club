@@ -153,7 +153,7 @@ for(var item in data.drawings) {
 function gotData(data){
 
   var div = document.getElementById('dinoList');
-  for (let i=1; i < 249; i++){
+  for (let i=1; i < 248; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.addClass("dinoGrid");
     image.parent(div);
