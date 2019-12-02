@@ -154,10 +154,13 @@ function gotData(data){
     //var dinoDate = dinoDrawing.time;
     //console.log(dinoURI);
     var li = document.createElement('li');
+
     //var dinospan = document.createElement('span');
     //dinospan.textContent = dinoCode;
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
+    image.addClass("grid-item");
     image.parent(li);
+
     //image.src = dinoSrc;
     //console.log(dinoSrc);
     //image.title = dinoCode + " " + dinoDate;
@@ -185,3 +188,11 @@ $(document).ready(function(){
     $('#welcomeModal').modal('open');
     $('.tabs').tabs();
  });
+
+//initialize masonry
+
+$('.grid').masonry({
+  // options
+  itemSelector: '.grid-item',
+  columnWidth: 200
+});

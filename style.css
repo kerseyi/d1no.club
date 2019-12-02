@@ -16,7 +16,7 @@ canvas {
 	max-height: 80vh;
 }
 
-@media all and (min-width: 700px) {
+/* @media all and (min-width: 700px) {
   #gallery img {
     max-width: 100%;
     width: 100%;
@@ -30,8 +30,12 @@ canvas {
     float: left;
     border: 1px solid black;
     margin: 5px;
+} */
+.grid-item { 
+	width: 30%; 
+	display: inline-block;
+	float: left;
 }
-
 
 .container {
 	max-width: 70vw;
