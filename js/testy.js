@@ -57,7 +57,8 @@ function setup() {
   //for loading PNG
   gotData(dinoPix);
   console.log(dinoPix);
-  $("#party").click(walkDino());
+  //$("#party").click(walkDino());
+  walkDino();
   
 }
 
