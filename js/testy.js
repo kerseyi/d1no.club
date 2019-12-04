@@ -17,11 +17,10 @@ function preload() {
 
 function setup() {
   let canvas = createCanvas(1000, 600);
-   let partyCanvas = createCanvas(1000, 600);
+   //let partyCanvas = createCanvas(1000, 600);
   let canvasWidth = windowWidth /1.45;
   let canvasHeight = windowHeight /1.5;
   resizeCanvas(canvasWidth, canvasHeight);
-  partyCanvas.parent('partyCanvas');
   canvas.parent('canvasContainer');
   canvas.id('main');
   slider = select('#bWidth');
@@ -58,12 +57,13 @@ function setup() {
   //for loading PNG
   gotData(dinoPix);
   console.log(dinoPix);
+  walkDino();
 }
 
 function draw() {
   radius = slider.value();
   c= color_picker.color()
-  walkDino();
+  
 }
 
 
@@ -156,21 +156,31 @@ function gotData(data){
   for (let i=1; i < 249; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.addClass("dinoGrid");
+    image.addClass("animation");
+    image.addClass("back-in-right");
     image.parent(div);
   }
 }
 
 function walkDino(){
   //var dinoNum = int(random(249));
-  var randomDino = random(dinoPix);
-  console.log(randomDino);
+  /*var randomDino = random(dinoPix);
+  console.log(randomDino);*/
   var image = createImg("img/dinoPix/dino_(" + 5 +").png", "");
-  for (let i=1; i < 1000; i++){
-    image.position(200 + i, random(20,25));
-  }
+  /*for (let i=1; i < 1000; i++){
+    
+  }*/
   image.parent(partyCanvas);
+  image.id('dinoAni');
 
-  }
+    width = "+=" + $(document).width();
+    $("#dinoAni").animate({
+    left: width
+    }, 5000, function() {
+    // Animation complete.
+  });
+
+}
 
 
 function errData(err){
