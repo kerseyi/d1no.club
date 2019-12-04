@@ -114,18 +114,18 @@ p {
 	width: 100%;
 }
 .dinoAni1 {
-	height: 100px;
+	height: 20vh;
 	padding: 10px 100px;
 }
 .dinoAni2 {
 	//position: relative;
-	height: 75px;
-	padding: 30px 20px;
+	height: 10vh;
+	padding: 2px 20px;
 	//left: 0px;
 }
 .dinoAni3 {
-	height: 150px;
-	padding: 50px 600px;
+	height: 30vh;
+	padding: 5px 600px;
 }
 .controlRow {
 	background-color: white;

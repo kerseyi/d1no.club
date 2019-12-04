@@ -169,7 +169,7 @@ function walkDino(){
   //var dinoNum = int(random(249));
   /*var randomDino = random(dinoPix);
   console.log(randomDino);*/
-  for (let i=1; i < 83; i++){
+  for (let i=1; i < 240; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     // image.addClass("dinoGrid");
     // image.addClass("animation");
@@ -179,7 +179,7 @@ function walkDino(){
     image.class('dinoAni3');
 
   }
-  for (let i=83; i < 166; i++){
+  for (let i=83; i < 231; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     // image.addClass("dinoGrid");
     // image.addClass("animation");
