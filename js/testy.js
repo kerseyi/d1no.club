@@ -58,7 +58,7 @@ function setup() {
   gotData(dinoPix);
   console.log(dinoPix);
   //$("#party").click(walkDino());
-  new Marquee('#partyCanvas1');
+  new Marquee('partyCanvas1');
   walkDino();
 
 }
