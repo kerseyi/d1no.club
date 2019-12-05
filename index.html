@@ -6,7 +6,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
-    <script language="javascript" type="text/javascript" src="js/jscolor.js"></script>
+    <script language="javascript" type="text/javascript" src="js/javascript-marquee-master/marquee.js"></script>
     <script language="javascript" type="text/javascript" src="js/testy.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://use.typekit.net/veh5czu.css">
@@ -24,7 +24,7 @@
             </div>
             <div class="col s10">
               <ul id="nav-mobile" class="right tabs tabs-fixed-width">
-                
+
                 <li class="tab col s3"><a id="party" href="#dinoAni">The Party!</a></li>
                 <li class="tab col s3"><a class="active" href="#draw">Draw!</a></li>
                 <li class="tab col s3"><a href="#gallery">Gallery!</a></li>
@@ -50,7 +50,7 @@
               <label for="bWidth">Brush Width</label>
               <input type="range" id="bWidth" name="borderWidth"
               min="2" max="25" value="10" step="2">
-              
+
             </div>
             <div class="col s12 m4">
               <label for="eraseBox">
@@ -65,36 +65,36 @@
           <div class="col s12 m4">
             <button id="clearButton" class="waves-effect waves-light btn-large">CLEAR!</button>
           </div>
-          
+
           <div  class="col s12 m4">
             <button id="saveButton" class="waves-effect waves-light btn-large">SUBMIT!</button>
           </div>
           <div class="col s12 m4">
             <button id="downloadButton" class="waves-effect waves-light btn-large">DOWNLOAD!</button>
           </div>
-          
+
         </div>
       </div>
     </div>
     <div id="gallery">
-      
-      
+
+
       <div id="dinoList">
-        
-        
-        
-        
+
+
+
+
       </div>
     </div>
     <div id="dinoAni">
-      <marquee style="margin-top: 10px;" id="partyCanvas1" scrollamount="20" direction="left" behavior="scroll">
-      </marquee>
+      <div style="margin-top: 10px;" id="partyCanvas1" scrollamount="20" direction="left" behavior="scroll">
+      </div>
       <marquee id="partyCanvas2" scrollamount="10" direction="right" behavior="scroll">
       </marquee>
       <marquee id="partyCanvas3" scrollamount="75" direction="left" behavior="scroll">
       </marquee>
     </div>
-    
+
     <div id="data">
       <div class="container-fluid">
         <div class="row" style="padding-top: 2em;">
@@ -126,9 +126,9 @@
             <h4>Total Color: 100</h4>
             <h4>Total Black and White: 149</h4>
           </div>
-          
+
         </div>
-        
+
         <div class="col s4">
           <div class="dinoBox">
             <img src="img/dinoPix/dino_(69).png" />
@@ -137,7 +137,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
   </div>
   <!-- Modal Structure -->
@@ -164,37 +164,20 @@
     <div class="modal-content">
       <h4>Thanks for your submission! Your dino has joined the club.</h4>
       <img style="height: 300px;" src="img/dinoPix/dino_(130).png" />
-      
+
       <div>
         <b style="font-size: 24px;"><p>COMPLETION CODE: <p id="completeCode"></p></p></b>
       </div>
-      
-      
+
+
     </div>
     <div class="modal-footer">
       <a id="drawAgainButton" href="#!" class="modal-close waves-effect waves-light btn-large">Draw another!</a>
     </div>
   </div>
-  <!-- Gallery Modal Trigger -->
-  <!-- Modal Structure
-  <div id="gallery" class="modal bottom-sheet modal-fixed-footer">
-    <div class="modal-content">
-      <div class="container-fluid">
-        <div class="col s12">
-          <h4>Gallery!</h4>
-          <ul id="dinoList">
-            
-          </ul>
-        </div>
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-large red ">Close</a>
-    </div>
-  </div> -->
+
   <div>
-    
+
   </div>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-74121673-3"></script>
