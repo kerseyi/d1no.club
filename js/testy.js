@@ -165,52 +165,24 @@ function gotData(data){
 }
 
 function walkDino(){
-
-  //var dinoNum = int(random(249));
-  /*var randomDino = random(dinoPix);
-  console.log(randomDino);*/
   for (let i=1; i < 240; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
-    // image.addClass("dinoGrid");
-    // image.addClass("animation");
-    // image.addClass("back-in-right");
-    // image.parent(div);
     image.parent(partyCanvas1);
     image.class('dinoAni3');
 
   }
   for (let i=83; i < 231; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
-    // image.addClass("dinoGrid");
-    // image.addClass("animation");
-    // image.addClass("back-in-right");
-    // image.parent(div);
     image.parent(partyCanvas2);
     image.class('dinoAni2');
 
   }
   for (let i=166; i < 249; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
-    // image.addClass("dinoGrid");
-    // image.addClass("animation");
-    // image.addClass("back-in-right");
-    // image.parent(div);
     image.parent(partyCanvas3);
     image.class('dinoAni3');
 
   }
-  /*for (let i=1; i < 1000; i++){
-
-  }*/
-
-   /* width = "+=" + $(document).width();
-    $("#dinoAni").animate({
-    left: width
-    }, 5000, function() {
-    // Animation complete.
-  });*/
-  //$("#partyCanvas").simplyScroll();
-
 }
 
 
