@@ -65,7 +65,7 @@ function setup() {
 
 function draw() {
   radius = slider.value();
-  c= color_picker.color()
+  c= color_picker.color();
 
 }
 
