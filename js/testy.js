@@ -10,7 +10,7 @@ let dinoPix = [];
   for (let i=1; i < 248; i++){
     dinoPix[i] = loadImage("img/dinoPix/dino_(" + i +").png");
   }
-  
+
   //console.log(data);
 }
 */
@@ -31,7 +31,7 @@ function setup() {
   drawAgain.mousePressed(changeBG);
   color_picker = createColorPicker("black");
   color_picker.parent("strokeColor");
-  
+
   //console.log(submitTime);
   //console.log(c);
   background(255);
@@ -59,13 +59,13 @@ function setup() {
   console.log(dinoPix);
   //$("#party").click(walkDino());
   walkDino();
-  
+
 }
 
 function draw() {
   radius = slider.value();
   c= color_picker.color()
-  
+
 }
 
 
@@ -200,9 +200,9 @@ function walkDino(){
 
   }
   /*for (let i=1; i < 1000; i++){
-    
+
   }*/
-  
+
    /* width = "+=" + $(document).width();
     $("#dinoAni").animate({
     left: width
@@ -229,6 +229,7 @@ $(document).ready(function(){
     $('#galleryModal').modal();
     $('#welcomeModal').modal('open');
     $('.tabs').tabs();
+    new Marquee('#partyCanvas1');
  });
 
 //initialize masonry
