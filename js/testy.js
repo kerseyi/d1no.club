@@ -58,6 +58,7 @@ function setup() {
   gotData(dinoPix);
   console.log(dinoPix);
   //$("#party").click(walkDino());
+  new Marquee('#partyCanvas1');
   walkDino();
 
 }
@@ -201,7 +202,7 @@ $(document).ready(function(){
     $('#galleryModal').modal();
     $('#welcomeModal').modal('open');
     $('.tabs').tabs();
-    new Marquee('#partyCanvas1');
+
  });
 
 //initialize masonry
