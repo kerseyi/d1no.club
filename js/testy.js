@@ -156,7 +156,7 @@ for(var item in data.drawings) {
 function gotData(data){
 
   var div = document.getElementById('dinoList');
-  for (let i=1; i < 249; i++){
+  for (let i=256; i >0; i--){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.addClass("dinoGrid");
     image.addClass("animation");
@@ -166,19 +166,19 @@ function gotData(data){
 }
 
 function walkDino(){
-  for (let i=1; i < 240; i++){
+  for (let i=1; i < 256; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.parent(partyCanvas1);
     image.class('dinoAni3');
 
   }
-  for (let i=83; i < 231; i++){
+  for (let i=83; i < 256; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.parent(partyCanvas2);
     image.class('dinoAni2');
 
   }
-  for (let i=166; i < 249; i++){
+  for (let i=166; i < 256; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.parent(partyCanvas3);
     image.class('dinoAni3');
