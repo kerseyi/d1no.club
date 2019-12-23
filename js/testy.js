@@ -3,7 +3,7 @@ var c = 255;
 var database;
 var data;
 let dinoPix = [];
-
+var totalDinos = 261;
 /*function preload() {
   // Get the dinos!
   //data =loadJSON('json/dinos3.json');
@@ -156,7 +156,7 @@ for(var item in data.drawings) {
 function gotData(data){
 
   var div = document.getElementById('dinoList');
-  for (let i=1; i < 259; i++){
+  for (let i=1; i < totalDinos; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.addClass("dinoGrid");
     image.addClass("animation");
@@ -166,19 +166,19 @@ function gotData(data){
 }
 
 function walkDino(){
-  for (let i=1; i < 259; i++){
+  for (let i=1; i < totalDinos; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.parent(partyCanvas1);
     image.class('dinoAni3');
 
   }
-  for (let i=83; i < 259; i++){
+  for (let i=83; i < totalDinos; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.parent(partyCanvas2);
     image.class('dinoAni2');
 
   }
-  for (let i=166; i < 259; i++){
+  for (let i=166; i < totalDinos; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.parent(partyCanvas3);
     image.class('dinoAni3');
