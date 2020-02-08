@@ -4,24 +4,23 @@ var database;
 var data;
 let dinoPix = [];
 
-function preload() {
+/*function preload() {
   // Get the dinos!
   //data =loadJSON('json/dinos3.json');
   for (let i=1; i < 248; i++){
     dinoPix[i] = loadImage("img/dinoPix/dino_(" + i +").png");
   }
-  
+
   //console.log(data);
 }
-
+*/
 
 function setup() {
   let canvas = createCanvas(1000, 600);
-   let partyCanvas = createCanvas(1000, 600);
+   //let partyCanvas = createCanvas(1000, 600);
   let canvasWidth = windowWidth /1.45;
   let canvasHeight = windowHeight /1.5;
   resizeCanvas(canvasWidth, canvasHeight);
-  partyCanvas.parent('partyCanvas');
   canvas.parent('canvasContainer');
   canvas.id('main');
   slider = select('#bWidth');
@@ -32,7 +31,7 @@ function setup() {
   drawAgain.mousePressed(changeBG);
   color_picker = createColorPicker("black");
   color_picker.parent("strokeColor");
-  
+
   //console.log(submitTime);
   //console.log(c);
   background(255);
@@ -58,12 +57,16 @@ function setup() {
   //for loading PNG
   gotData(dinoPix);
   console.log(dinoPix);
+  //$("#party").click(walkDino());
+  //new Marquee('partyCanvas1');
+  walkDino();
+
 }
 
 function draw() {
   radius = slider.value();
-  c= color_picker.color()
-  walkDino();
+  c= color_picker.color();
+
 }
 
 
@@ -153,24 +156,37 @@ for(var item in data.drawings) {
 function gotData(data){
 
   var div = document.getElementById('dinoList');
-  for (let i=1; i < 248; i++){
+
+  for (let i=1; i < 256; i++){
     var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.addClass("dinoGrid");
+    image.addClass("animation");
+    image.addClass("back-in-right");
     image.parent(div);
   }
 }
 
 function walkDino(){
-  //var dinoNum = int(random(249));
-  var randomDino = random(dinoPix);
-  console.log(randomDino);
-  var image = createImg("img/dinoPix/dino_(" + 5 +").png", "");
-  for (let i=1; i < 1000; i++){
-    image.position(200 + i, random(20,25));
-  }
-  image.parent(partyCanvas);
+  for (let i=1; i < 256; i++){
+    var image = createImg("img/dinoPix/dino_(" + i +").png", "");
+    image.parent(partyCanvas1);
+    image.class('dinoAni3');
 
   }
+  for (let i=83; i < 256; i++){
+    var image = createImg("img/dinoPix/dino_(" + i +").png", "");
+    image.parent(partyCanvas2);
+    image.class('dinoAni2');
+
+  }
+  for (let i=166; i < 256; i++){
+    var image = createImg("img/dinoPix/dino_(" + i +").png", "");
+    image.parent(partyCanvas3);
+    image.class('dinoAni3');
+
+  }
+}
+
 
 
 function errData(err){
@@ -187,6 +203,7 @@ $(document).ready(function(){
     $('#galleryModal').modal();
     $('#welcomeModal').modal('open');
     $('.tabs').tabs();
+
  });
 
 //initialize masonry

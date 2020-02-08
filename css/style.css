@@ -1,0 +1,170 @@
+body {
+	font-family: chantal, sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	background: url(../img/landscape.jpg) no-repeat center center fixed;
+}
+canvas {
+	border: 1px solid black;
+}
+#strokeColor input {
+	width: 100%;
+	height: 25px;
+}
+
+.modal-fixed-footer{
+	max-height: 95vh;
+    height: 100vh;
+}
+
+#welcomeModal {
+	height: 80vh;
+	max-height: 80vh;
+}
+
+.brand-logo{
+	font-family: chantal, sans-serif;
+	font-weight: 600;
+	font-style: italic;
+}
+
+/* @media all and (min-width: 700px) {
+  #gallery img {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+  }
+}
+#gallery img {
+
+	max-width: 30%;
+    display: inline-block;
+    float: left;
+    border: 1px solid black;
+    margin: 5px;
+} */
+.grid {
+	width: 100%;
+}
+.grid-item,
+.grid-sizer { 
+	width: 30%; 
+	
+}
+
+.container {
+	max-width: 70vw;
+	margin: 0 auto;
+}
+
+label {
+	font-size: 2rem;
+	color: black;
+}
+button {
+	width: 100%;
+}
+p {
+	font-size: 16px;
+}
+.btn-large {
+	font-size: 24px;
+	font-family: chantal, sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.modal-footer {
+	min-height: 10vh;
+}
+
+#p5_loading {
+	width: 100%;
+	height: 100%;
+	background: url(../img/dinoLoad.png) no-repeat center center fixed;
+}
+
+.tabs {
+	height: 100%;
+}
+.tabs .tab a {
+	font-size: 20px;
+	height: 100%;
+	padding: 6px 24px;
+}
+
+.tabs.tabs-fixed-width .tab{
+	height: 100%;
+}
+
+#dinoList {
+	columns: 20vw;
+	column-gap: 5px; 
+
+}
+
+.dinoGrid{
+	break-inside: avoid-column;
+	//margin-bottom: 0.25rem; 
+	padding: 5px;
+	width: 100%;
+}
+
+.dinoGrid img {
+	width: 100%;
+}
+.dinoAni1 {
+	height: 20vh;
+	padding: 10px 100px;
+}
+.dinoAni2 {
+	//position: relative;
+	height: 12vh;
+	padding: 2px 20px;
+	//left: 0px;
+}
+.dinoAni3 {
+	height: 30vh;
+	padding: 5px 600px;
+}
+.controlRow {
+	background-color: white;
+	padding: 5px;
+	border-radius: 10px;
+	margin: 10px 15px;
+}
+
+#partyCanvas1, #partyCanvas2, #partyCanvas3 {
+	width: 100vw;
+	max-width: 100vw;
+}
+
+#dinoAni{
+	background: url(../img/apocalypse.jpg) no-repeat center center fixed;
+	min-height: 100vh;
+}
+
+#draw {
+	background: url(../img/landscape.jpg) no-repeat center center fixed;
+	color: white;
+}
+
+#gallery {
+	background-color: white;
+}
+
+#data {
+	background: url(../img/volcano.jpg) no-repeat center center fixed;
+	height: 120vh;
+	color: black;
+}
+
+#data img {
+	height: 200px;
+}
+
+.dinoBox {
+	background:rgba(255,255,255, 0.5);
+	border-radius: 10px;
+	text-align: center;
+}

@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: d1no.club
+Token: bfc81e6eec27cf4be8734a88e2a8ac6dd02aff16021c3a184494f7f82c9d18ac
