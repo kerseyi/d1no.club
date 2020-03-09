@@ -47,9 +47,9 @@ canvas {
 	width: 100%;
 }
 .grid-item,
-.grid-sizer { 
-	width: 30%; 
-	
+.grid-sizer {
+	width: 30%;
+
 }
 
 .container {
@@ -99,19 +99,19 @@ p {
 
 #dinoList {
 	columns: 20vw;
-	column-gap: 5px; 
+	column-gap: 5px;
 
 }
 
 .dinoGrid{
 	break-inside: avoid-column;
-	//margin-bottom: 0.25rem; 
+	//margin-bottom: 0.25rem;
 	padding: 5px;
 	width: 100%;
 }
 
 .dinoGrid img {
-	width: 100%;
+	width: 40%;
 }
 .dinoAni1 {
 	height: 20vh;
