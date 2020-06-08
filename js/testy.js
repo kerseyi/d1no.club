@@ -156,15 +156,19 @@ for(var item in data.drawings) {
 function gotData(data){
 
   var div = document.getElementById('dinoList');
-
+  var image = createImg("img/dinoPix/dino_(1).png", "");
   for (let i=1; i < totalDinos; i++){
-    var image = createImg("img/dinoPix/dino_(" + i +").png", "");
+    
+    image.attribute('data-src', "img/dinoPix/dino_(" + i +").png");
     image.addClass("dinoGrid");
     image.addClass("animation");
+    image.addClass("lazy");
     image.addClass("back-in-right");
     image.parent(div);
   }
 }
+
+
 
 function walkDino(){
   for (let i=1; i < totalDinos; i++){
@@ -214,3 +218,32 @@ $(document).ready(function(){
   columnWidth: '.grid-sizer',
   percentPosition: true
 });*/
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyloadImages = document.querySelectorAll("img.lazy");    
+  var lazyloadThrottleTimeout;
+  
+  function lazyload () {
+    if(lazyloadThrottleTimeout) {
+      clearTimeout(lazyloadThrottleTimeout);
+    }    
+    
+    lazyloadThrottleTimeout = setTimeout(function() {
+        var scrollTop = window.pageYOffset;
+        lazyloadImages.forEach(function(img) {
+            if(img.offsetTop < (window.innerHeight + scrollTop)) {
+              img.src = img.dataset.src;
+              img.classList.remove('lazy');
+            }
+        });
+        if(lazyloadImages.length == 0) { 
+          document.removeEventListener("scroll", lazyload);
+          window.removeEventListener("resize", lazyload);
+          window.removeEventListener("orientationChange", lazyload);
+        }
+    }, 20);
+  }
+  
+  document.addEventListener("scroll", lazyload);
+  window.addEventListener("resize", lazyload);
+  window.addEventListener("orientationChange", lazyload);
+});
