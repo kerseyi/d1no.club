@@ -156,9 +156,8 @@ for(var item in data.drawings) {
 function gotData(data){
 
   var div = document.getElementById('dinoList');
-  var image = createImg("img/dinoPix/dino_(1).png", "");
   for (let i=1; i < totalDinos; i++){
-    
+    var image = createImg("img/dinoPix/dino_(" + i +").png", "");
     image.attribute('data-src', "img/dinoPix/dino_(" + i +").png");
     image.addClass("dinoGrid");
     image.addClass("animation");
