@@ -3,7 +3,7 @@ var c = 255;
 var database;
 var data;
 let dinoPix = [];
-var totalDinos = 261;
+var totalDinos = 250;
 /*function preload() {
   // Get the dinos!
   //data =loadJSON('json/dinos3.json');
